@@ -4,13 +4,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import com.moniquetrevisan.basic.accountingservice.model.Accounting;
 
 public class AccountingRepository {
 	
-	private static Logger log = Logger.getLogger(AccountingRepository.class);
+	private static Logger log = LogManager.getLogger(AccountingRepository.class);
 	
 	private static ConcurrentHashMap<String, Accounting> accountingHashMap = new ConcurrentHashMap<>();
 	
