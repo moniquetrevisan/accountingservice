@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.moniquetrevisan.basic.accountingservice.model.Accounting;
+import com.moniquetrevisan.basic.accountingservice.model.Stats;
 import com.moniquetrevisan.basic.accountingservice.service.AccountingService;
 
 @RestController
@@ -80,6 +81,38 @@ public class AccountingController {
 		} catch (Exception e) {
 			log.error(e.getMessage(), e);
 			response = new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return response;
+	}
+	
+	@RequestMapping(value = "/lancamentos-contabeis/_stats", method = RequestMethod.GET)
+	public ResponseEntity<Stats> getGeneralStats(){
+		ResponseEntity<Stats> response = null;
+		try {
+			Stats stats = service.getGeneralStats();
+			if(stats == null) {
+				return new ResponseEntity<Stats>(stats, HttpStatus.NOT_FOUND);
+			}
+			response = new ResponseEntity<Stats>(stats, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			response = new ResponseEntity<Stats>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return response;
+	}
+	
+	@RequestMapping(value = "/lancamentos-contabeis/_stats", params = "contaContabil", method = RequestMethod.GET)
+	public ResponseEntity<Stats> getStatsByContaContabil(@RequestParam("contaContabil") String contaContabil){
+		ResponseEntity<Stats> response = null;
+		try {
+			Stats stats = service.getStatsByContaContabil(contaContabil);
+			if(stats == null) {
+				return new ResponseEntity<Stats>(stats, HttpStatus.NOT_FOUND);
+			}
+			response = new ResponseEntity<Stats>(stats, HttpStatus.OK);
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
+			response = new ResponseEntity<Stats>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return response;
 	}

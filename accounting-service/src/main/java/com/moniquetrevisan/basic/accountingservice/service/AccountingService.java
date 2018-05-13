@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.moniquetrevisan.basic.accountingservice.model.Accounting;
+import com.moniquetrevisan.basic.accountingservice.model.Stats;
 import com.moniquetrevisan.basic.accountingservice.repository.AccountingRepository;
 
 @Service
@@ -31,5 +32,13 @@ public class AccountingService {
 	public List<Accounting> findAll() {
 		return repository.findAll();
 	}
+	
+	public Stats getGeneralStats(){
+		return repository.getGeneralStats();
+	}
+	
+	public Stats getStatsByContaContabil(String contaContabil){
+		return repository.getStatsByContaContabil(contaContabil);
+	}	
 	
 }
