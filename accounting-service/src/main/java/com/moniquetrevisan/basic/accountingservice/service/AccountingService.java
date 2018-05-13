@@ -1,5 +1,7 @@
 package com.moniquetrevisan.basic.accountingservice.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.moniquetrevisan.basic.accountingservice.model.Accounting;
@@ -16,6 +18,18 @@ public class AccountingService {
 	
 	public String create(Accounting accounting) {
 		return repository.save(accounting);
+	}
+	
+	public List<Accounting> findByContaContabil(String contaContabil) {
+		return repository.findByContaContabil(contaContabil);
+	}
+	
+	public Accounting findById(String id) {
+		return repository.findById(id);
+	}
+	
+	public List<Accounting> findAll() {
+		return repository.findAll();
 	}
 	
 }

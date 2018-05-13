@@ -2,8 +2,6 @@ package com.moniquetrevisan.basic.accountingservice.model;
 
 import java.io.Serializable;
 
-import org.joda.time.LocalDate;
-
 public class Accounting implements Serializable {
 	
 	/**
@@ -12,21 +10,21 @@ public class Accounting implements Serializable {
 	private static final long serialVersionUID = 5033929702358323745L;
 	private String id;
 	private String contaContabil;
-	private LocalDate data;
+	private String data;
 	private float valor;
 	
 	public Accounting() {
 		
 	}
 	
-	public Accounting(String id, String contaContabil, LocalDate data, float valor) {
+	public Accounting(String id, String contaContabil, String data, float valor) {
 		this.id = id;
 		this.contaContabil = contaContabil;
 		this.data = data;
 		this.valor = valor;
 	}
 	
-	public Accounting(String contaContabil, LocalDate data, float valor) {
+	public Accounting(String contaContabil, String data, float valor) {
 		this.contaContabil = contaContabil;
 		this.data = data;
 		this.valor = valor;
@@ -48,11 +46,11 @@ public class Accounting implements Serializable {
 		this.contaContabil = contaContabil;
 	}
 
-	public LocalDate getData() {
+	public String getData() {
 		return data;
 	}
-
-	public void setData(LocalDate data) {
+	
+	public void setData(String data) {
 		this.data = data;
 	}
 
@@ -106,8 +104,7 @@ public class Accounting implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Accounting [id=" + id + ", contaContabil=" + contaContabil + ", data=" + data + ", valor=" + valor
-				+ "]";
+		return getId() + "," + getContaContabil() + "," + getData() + "," + getValor();
 	}
 	
 }

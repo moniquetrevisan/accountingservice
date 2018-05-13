@@ -2,7 +2,9 @@ package com.moniquetrevisan.basic.accountingservice.repository;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -37,9 +39,21 @@ public class AccountingRepository {
 		return accounting.getId();
 	}
 	
+	public List<Accounting> findByContaContabil(String contaContabil) {
+		return  accountingHashMap.values().stream().filter(accounting -> accounting.getContaContabil().equals(contaContabil)).collect(Collectors.toList());
+	}
+	
+	public Accounting findById(String id) {
+		return  accountingHashMap.get(id);
+	}
+	
+	public List<Accounting> findAll() {
+		return  accountingHashMap.values().stream().collect(Collectors.toList());
+	}
+	
 	private String generateAccountingId(Accounting accounting) {
 		try {
-			String accountStr = accounting.getContaContabil() + "" + accounting.getData().toString("yyyyMMdd") + "" + String.valueOf(accounting.getValor());
+			String accountStr = accounting.getContaContabil() + "" + accounting.getData() + "" + String.valueOf(accounting.getValor());
 			MessageDigest md = MessageDigest.getInstance("SHA-512");
 			byte[] idHashed = md.digest(accountStr.getBytes());
 			if(null != idHashed) {
