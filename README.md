@@ -1,4 +1,4 @@
-#Backend -  Comexport Java Code Challenge - V1.0
+Backend -  Comexport Java Code Challenge - V1.0
 
 1. Cadastro de lançamento contábil
 post 
@@ -38,14 +38,14 @@ get
   url: http://localhost:8081/api/lancamentos-contabeis/_stats/?contaContabil=1
 
 
-#Testes 
-create
+Testes 
+- create
 {"contaContabil":"1","data":"20170130","valor":1}
 {"contaContabil":"1","data":"20170130","valor":2}
 {"contaContabil":"2","data":"20170130","valor":3}
 {"contaContabil":"3","data":"20170130","valor":4}
 
-findAll
+- findAll
 url: http://localhost:8081/api/lancamentos-contabeis/findAll
 result: 
 Request URL: http://localhost:8081/api/lancamentos-contabeis/findAll
@@ -60,7 +60,7 @@ Referrer Policy: no-referrer-when-downgrade
 {"id":"[B@41d2949c","contaContabil":"3","data":"20170130","valor":4.0}
 ]
 
-findById
+- findById
 url: http://localhost:8081/api/lancamentos-contabeis/%5BB@2d145e06
 result:
 Request URL: http://localhost:8081/api/lancamentos-contabeis/%5BB@2d145e06
@@ -72,7 +72,7 @@ Referrer Policy: no-referrer-when-downgrade
 {"id":"[B@2d145e06","contaContabil":"1","data":"20170130","valor":1.0}
 ]
 
-findByContaContabil
+- findByContaContabil
 url: http://localhost:8081/api/lancamentos-contabeis/?contaContabil=1
 result:
 Request URL: http://localhost:8081/api/lancamentos-contabeis/?contaContabil=1
@@ -84,7 +84,7 @@ Referrer Policy: no-referrer-when-downgrade
 {"id":"[B@2d145e06","contaContabil":"1","data":"20170130","valor":1.0},{"id":"[B@27cbf4ce","contaContabil":"1","data":"20170130","valor":2.0}
 ]
 
-getGeneralStats
+- getGeneralStats
 url: http://localhost:8081/api/lancamentos-contabeis/_stats
 result:
 Request URL: http://localhost:8081/api/lancamentos-contabeis/_stats
@@ -96,7 +96,7 @@ Referrer Policy: no-referrer-when-downgrade
 {"soma":10.0,"min":1.0,"max":4.0,"media":2.5,"qtde":4.0}
 ]
 
-getStatsByContaContabil
+- getStatsByContaContabil
 url: http://localhost:8081/api/lancamentos-contabeis/_stats/?contaContabil=1
 result:
 Request URL: http://localhost:8081/api/lancamentos-contabeis/_stats/?contaContabil=1
